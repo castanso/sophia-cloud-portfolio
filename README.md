@@ -46,6 +46,16 @@ The website is available at [sophiacastaneda.com](https://sophiacastaneda.com)
 
 The website files are stored on GitHub and prepared for Cloudflare Pages. After Cloudflare is connected, updates to the `main` branch will be deployed automatically.
 
+## Troubleshooting
+
+### Cloudflare Redirect Loop
+
+After the first deployment, the homepage worked, but the other pages returned an `ERR_TOO_MANY_REDIRECTS` error.
+
+Cloudflare Pages automatically redirects `.html` pages to extensionless URLs. My `_redirects` file was sending those URLs back to their `.html` versions, which created a loop.
+
+I fixed the issue by removing the unnecessary page rules from `_redirects`. This taught me how Cloudflare Pages handles clean URLs and how conflicting redirect rules can affect a deployment.
+
 ### Cloudflare Pages Settings
 
 | Setting | Value |
