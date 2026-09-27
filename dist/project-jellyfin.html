@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jellyfin Uptime Monitor | Sophia Castaneda</title>
+<meta name="description" content="AWS serverless uptime monitoring project using Lambda, DynamoDB, EventBridge, SNS, and CloudWatch.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/styles.css">
+<script defer src="assets/script.js">
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="nav-wrap">
+<a class="brand" href="index.html">Sophia Castaneda</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a aria-current="page" href="projects.html">Projects</a>
+<a href="skills.html">Skills</a>
+<a href="training.html">Training</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="nav-actions">
+<button class="icon-button" data-theme-toggle aria-label="Switch theme">☾</button>
+<button class="menu-button" data-menu-toggle aria-label="Open menu" aria-expanded="false">☰</button>
+</div>
+</nav>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<div class="eyebrow">Serverless monitoring · Completed</div>
+<h1>Jellyfin Uptime Monitor</h1>
+<p>This AWS project checks a self-hosted Jellyfin server every hour. It sends an email when the server goes offline or comes back online.</p>
+<div class="button-row">
+<a class="button primary" href="https://github.com/castanso/AWS-jellyfin-uptime-monitor">View repository ↗</a>
+<a class="button" href="projects.html">All projects</a>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container grid two">
+<article class="card prose reveal">
+<h2>Problem</h2>
+<p>I wanted to know when a friend’s Jellyfin server went offline. I also wanted to avoid getting the same alert every hour.</p>
+<h2>Solution</h2>
+<p>EventBridge runs a Lambda function every hour. Lambda checks the server URL and compares the result with the last status saved in DynamoDB. SNS sends an email only when the status changes.</p>
+<h2>Result</h2>
+<p>The monitor runs automatically. CloudWatch records each check, and the email alerts work as expected.</p>
+</article>
+<aside class="card reveal">
+<div class="eyebrow">Architecture</div>
+<div class="architecture" role="img" aria-label="EventBridge triggers Lambda, which checks Jellyfin, stores status in DynamoDB, logs to CloudWatch, and sends status-change alerts through SNS">
+<div class="arch-flow">
+<div class="arch-node">EventBridge</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">Lambda</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">Jellyfin URL</div>
+</div>
+<div class="arch-flow">
+<div class="arch-node">DynamoDB state</div>
+<span class="arch-arrow">↔</span>
+<div class="arch-node">Lambda logic</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">SNS email</div>
+</div>
+<div class="arch-flow">
+<div class="arch-node">CloudWatch logs & metrics</div>
+</div>
+</div>
+<div class="tag-list">
+<span class="tag">Lambda</span>
+<span class="tag">EventBridge</span>
+<span class="tag">DynamoDB</span>
+<span class="tag">SNS</span>
+<span class="tag">CloudWatch</span>
+<span class="tag">IAM</span>
+</div>
+</aside>
+</div>
+</section>
+<section class="section">
+<div class="container grid two">
+<article class="card reveal">
+<h2>Challenge and fix</h2>
+<p>My first test failed because Lambda did not have permission to publish to SNS. I found the authorization error and added the needed <code>sns:Publish</code> permission to the role.</p>
+</article>
+<article class="card reveal">
+<h2>Future improvements</h2>
+<ul class="clean-list">
+<li>Add SMS alerts when messaging access is available</li>
+<li>Support multiple recipients</li>
+<li>Improve status reporting and operational dashboards</li>
+<li>Manage the infrastructure with Terraform</li>
+</ul>
+</article>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-wrap">
+<span>© 2026 Sophia Castaneda</span>
+<a href="projects.html">Back to projects</a>
+</div>
+</footer>
+</body>
+</html>

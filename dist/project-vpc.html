@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VPC & EC2 Web Server | Sophia Castaneda</title>
+<meta name="description" content="AWS networking project with a custom VPC, public subnet, routing, security group, and EC2 Apache web server.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/styles.css">
+<script defer src="assets/script.js">
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="nav-wrap">
+<a class="brand" href="index.html">Sophia Castaneda</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a aria-current="page" href="projects.html">Projects</a>
+<a href="skills.html">Skills</a>
+<a href="training.html">Training</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="nav-actions">
+<button class="icon-button" data-theme-toggle aria-label="Switch theme">☾</button>
+<button class="menu-button" data-menu-toggle aria-label="Open menu" aria-expanded="false">☰</button>
+</div>
+</nav>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<div class="eyebrow">Cloud networking · Completed</div>
+<h1>VPC & EC2 Web Server</h1>
+<p>I built a custom AWS network and launched a Linux EC2 instance inside it. The instance hosts a basic Apache website.</p>
+<div class="button-row">
+<a class="button primary" href="https://github.com/castanso/AWS-vpc-webserver-deployment">View repository ↗</a>
+<a class="button" href="projects.html">All projects</a>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container grid two">
+<article class="card prose reveal">
+<h2>Goal</h2>
+<p>My goal was to learn how internet traffic reaches an EC2 web server and how AWS controls that access.</p>
+<h2>Implementation</h2>
+<p>I created a VPC and public subnet. Then I attached an internet gateway and configured the route table. I allowed HTTP and SSH through the security group. After launching EC2, I connected with PuTTY, installed Apache, and opened the website in my browser.</p>
+<h2>What I practiced</h2>
+<p>I practiced VPC addressing, subnetting, routes, security groups, EC2 setup, SSH, and basic Linux administration.</p>
+</article>
+<aside class="card reveal">
+<div class="eyebrow">Traffic path</div>
+<div class="architecture" role="img" aria-label="Internet traffic moves through an internet gateway and route table into a public subnet, through a security group, and to an EC2 Apache web server">
+<div class="arch-flow">
+<div class="arch-node">Internet</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">Internet Gateway</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">Route Table</div>
+</div>
+<div class="arch-flow">
+<div class="arch-node">Public Subnet</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">Security Group</div>
+<span class="arch-arrow">→</span>
+<div class="arch-node">EC2 + Apache</div>
+</div>
+</div>
+<div class="tag-list">
+<span class="tag">Amazon VPC</span>
+<span class="tag">EC2</span>
+<span class="tag">Route Tables</span>
+<span class="tag">Security Groups</span>
+<span class="tag">Linux</span>
+<span class="tag">Apache</span>
+</div>
+</aside>
+</div>
+</section>
+<section class="section">
+<div class="container grid two">
+<article class="card reveal">
+<h2>Operational validation</h2>
+<ul class="clean-list">
+<li>Confirmed EC2 received the intended network configuration</li>
+<li>Verified SSH connectivity with the converted key file</li>
+<li>Validated HTTP access from a public browser</li>
+<li>Checked that security-group rules matched required ports</li>
+</ul>
+</article>
+<article class="card reveal">
+<h2>Future improvements</h2>
+<ul class="clean-list">
+<li>Provision the environment with Terraform</li>
+<li>Add a private subnet and load balancer</li>
+<li>Use HTTPS and a custom domain</li>
+<li>Add CloudWatch monitoring and automated deployment</li>
+</ul>
+</article>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-wrap">
+<span>© 2026 Sophia Castaneda</span>
+<a href="projects.html">Back to projects</a>
+</div>
+</footer>
+</body>
+</html>
