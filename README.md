@@ -4,7 +4,7 @@ My personal portfolio website for sharing my AWS projects, technical skills, tra
 
 ## Portfolio Website
 
-The website will be available at [sophiacastaneda.com](https://sophiacastaneda.com) after Cloudflare deployment is complete.
+The website is available at [sophiacastaneda.com](https://sophiacastaneda.com) 
 
 ## Featured Projects
 
